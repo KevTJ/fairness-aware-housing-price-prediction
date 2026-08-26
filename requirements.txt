@@ -1,0 +1,10 @@
+# Core data science stack
+numpy
+pandas
+matplotlib
+scikit-learn
+requests
+
+# Notebook environment
+jupyterlab
+ipykernel
