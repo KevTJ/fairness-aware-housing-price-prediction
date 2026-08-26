@@ -28,7 +28,10 @@ fairness-aware-housing-price-prediction/
 ├── requirements.txt
 ├── .gitignore
 ├── notebooks/
-│   └── 01_problem_data_and_fairness_framework.ipynb
+│   ├── 01_problem_data_and_fairness_framework.ipynb
+│   └── 02_modeling_population_and_features.ipynb
+├── scripts/
+│   └── get_data.sh
 ├── src/
 ├── data/
 │   ├── README.md
@@ -53,15 +56,17 @@ Additional modeling, fairness-audit, and interpretation notebooks will be added 
 
 ## Data
 
-The large Cook County source dataset is intentionally excluded from version control. See [`data/README.md`](data/README.md) for the expected local file structure.
+The large Cook County source dataset is intentionally excluded from version control. From the repository root, run:
+
+```bash
+bash scripts/get_data.sh
+```
+
+This downloads and verifies the archive into `data/raw/`, which is gitignored. See [`data/README.md`](data/README.md) for details.
 
 ## Census API configuration
 
-ACS requests can be made without embedding credentials in the notebook. If you use a Census API key, expose it through an environment variable:
-
-```bash
-export CENSUS_API_KEY="your_key_here"
-```
+ACS requests can be made without embedding credentials in the notebook. In GitHub Codespaces, provide a repository-scoped secret named `CENSUS_API_KEY`; locally, expose the same environment variable before running the analysis.
 
 Never commit API keys, `.env` files, or URLs containing credentials.
 
