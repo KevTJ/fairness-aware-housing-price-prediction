@@ -1,0 +1,35 @@
+# Data (large/local files)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Model artifacts
+*.pkl
+*.pickle
+*.joblib
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
