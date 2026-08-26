@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.metrics import mean_absolute_error, mean_squared_error, median_absolute_error, r2_score
 
 
 def regression_metrics(y_true, y_pred) -> dict[str, float]:
@@ -18,6 +18,7 @@ def regression_metrics(y_true, y_pred) -> dict[str, float]:
     return {
         "MAE": mean_absolute_error(y_true, y_pred),
         "RMSE": mean_squared_error(y_true, y_pred) ** 0.5,
+        "Median AE": median_absolute_error(y_true, y_pred),
         "MAPE": np.mean(np.abs((y_pred - y_true) / y_true)) * 100,
         "R2": r2_score(y_true, y_pred),
     }
@@ -55,6 +56,7 @@ def price_decile_calibration(y_true, y_pred, q: int = 10) -> pd.DataFrame:
             n=("actual", "size"),
             median_actual=("actual", "median"),
             median_predicted=("predicted", "median"),
+            MAE=("absolute_error", "mean"),
             median_signed_pct_error=("signed_pct_error", "median"),
             median_absolute_pct_error=("absolute_pct_error", "median"),
             median_prediction_ratio=("prediction_ratio", "median"),
